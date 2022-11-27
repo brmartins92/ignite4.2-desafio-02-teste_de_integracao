@@ -14,14 +14,17 @@ export class CreateUserUseCase {
   ) {}
 
   async execute({ name, email, password }: ICreateUserDTO) {
+    console.log("controller entrou");
+    return { email: "bruno" };
+
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
       throw new CreateUserError();
     }
-
+    
     const passwordHash = await hash(password, 8);
-
+    return { stuatus :"ok"}
     const user = await this.usersRepository.create({
       email,
       name,
