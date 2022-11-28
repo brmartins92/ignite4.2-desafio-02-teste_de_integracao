@@ -1,9 +1,10 @@
 version: "3.3"
 
 services:
-  database: #ESSE É O NOME DO SERVICE QUE DEVE ESTAR NO ARQUIVO DE CRIAÇÃO DE CONEXÃO
+  database:
+    #ESSE É O NOME DO SERVICE QUE DEVE ESTAR NO ARQUIVO DE CRIAÇÃO DE CONEXÃO
     image: postgres
-    container_name: database_ignite
+    container_name: database_ignite_4_2
     restart: always
     ports:
       - 5432:5432

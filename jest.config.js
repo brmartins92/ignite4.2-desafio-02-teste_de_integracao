@@ -1,6 +1,7 @@
 
 module.exports = {
-  testTimeout: 50000000000000000000000000000000000,
+  testTimeout: 5000,
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -37,6 +38,7 @@ module.exports = {
   //   "lcov",
   //   "clover"
   // ],
+
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
