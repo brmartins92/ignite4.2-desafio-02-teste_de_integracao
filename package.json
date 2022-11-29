@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn ./src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "test": "jest",
-    "test-coverage": "jest --coverage"
+    "test-coverage": "jest --coverage --runInBand --detectOpenHandles"
   },
   "dependencies": {
     "@types/supertest": "^2.0.12",

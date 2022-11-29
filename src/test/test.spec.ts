@@ -2,17 +2,23 @@
 //const { validate, v4 as uuidv4 } = require('uuid');
 import { v4 as uuidv4 } from 'uuid';
 import request from "supertest";
-import { createConnection, getConnection } from "typeorm";
+import { Connection } from 'typeorm'
+import createConnection from '../database'
+
 import { app } from "../app";
 
+let connection: Connection
+
 describe('Todos', () => {
+
   beforeAll(async () => {
-    await createConnection();
+    connection = await createConnection();
+    await connection.runMigrations();
   });
 
   afterAll(async () => {
-    const myConnection = getConnection();
-    await myConnection.close();
+    await connection.dropDatabase();
+    await connection.close();
   });
 
   const user = {
@@ -49,7 +55,7 @@ describe('Todos', () => {
         email: user.email,
         password: user.password
       });
-
+    console.log(r);
     expect(r.status).toBe(200);
     expect(r.body).toHaveProperty("token");
     expect(r.body).toHaveProperty("user");
